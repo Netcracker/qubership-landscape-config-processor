@@ -69,4 +69,12 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Netcracker Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Netcracker/qubership-landscape-config-processor</url>
+        </repository>
+    </distributionManagement>
+
 </project>
