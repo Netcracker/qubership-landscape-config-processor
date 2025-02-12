@@ -48,31 +48,31 @@ public class HideSomeItemsTest {
 
     @Test
     public void hideItem001() {
-        doTestLogic("com/github/exadmin/hide/t001/drop-item-001.yml",
+        doTestLogic("org/qubership/landscape/processor/hide/t001/drop-item-001.yml",
                 Arrays.asList("Item - 002", "Item - 003"));
     }
 
     @Test
     public void hideItem002() {
-        doTestLogic("com/github/exadmin/hide/t001/drop-item-002.yml",
+        doTestLogic("org/qubership/landscape/processor/hide/t001/drop-item-002.yml",
                 Arrays.asList("Item - 001", "Item - 003"));
     }
 
     @Test
     public void hideItem003() {
-        doTestLogic("com/github/exadmin/hide/t001/drop-item-003.yml",
+        doTestLogic("org/qubership/landscape/processor/hide/t001/drop-item-003.yml",
                 Arrays.asList("Item - 002", "Item - 001"));
     }
 
     @Test
     public void hideNonExistedItem() {
-        doTestLogic("com/github/exadmin/hide/t001/drop-item-004.yml",
+        doTestLogic("org/qubership/landscape/processor/hide/t001/drop-item-004.yml",
                 Arrays.asList("Item - 001", "Item - 002", "Item - 003"));
     }
 
     @Test (expected = AssertionError.class)
     public void rainyTest() {
-        doTestLogic("com/github/exadmin/hide/t001/drop-item-001.yml",
+        doTestLogic("org/qubership/landscape/processor/hide/t001/drop-item-001.yml",
                 Arrays.asList("Item - 001", "Item - 002", "Item - 003"));
     }
 }

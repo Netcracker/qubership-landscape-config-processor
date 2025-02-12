@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class ConfigA_Factory {
     public static TheLandscape getConfigA() throws Exception {
-        TheLandscape model = TheModelsUtils.loadModelFromResource("com/github/exadmin/yaml_based/configA/config-A.yml");
+        TheLandscape model = TheModelsUtils.loadModelFromResource("org/qubership/landscape/processor/yaml_based/configA/config-A.yml");
 
         // assert model
         // check Category
