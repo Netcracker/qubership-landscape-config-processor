@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cncf/landscape2/refs/heads/main/docs/config/schema/data.schema.json
+
+landscape:
+  - category:
+    name: Category 001
+    subcategories:
+      - subcategory:
+        name: SubCategory 001
+        items:
+          - item:
+            name: Item - 001
+            homepage_url: https://example.org/test001
+            repo_url: https://example.org/test001
+            logo: test001.svg
+          - item:
+            name: Item - 002
+            homepage_url: https://example.org/test002
+            repo_url: https://example.org/test002
+            logo: test002.svg
+          - item:
+            name: Item - 003
+            homepage_url: https://example.org/test003
+            repo_url: https://example.org/test003
+            logo: test003.svg
