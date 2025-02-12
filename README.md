@@ -13,17 +13,17 @@ But in case you need customize somehow original landscape (hide, highlight, add 
 you will require to keep your own copy of landscape.yml.
 And the main problem here - is to merge regular updates from original landscape.yml file if required.
 
-This tool "landscape-config-processor-app" provides ability of automatic merge of extra yaml-files into base one.
+This tool "landscape-config-processor-X.Y.Z" provides ability of automatic merge of extra yaml-files into base one.
 So, the base file can be always just a copy of original file. And all other changes can be defined by
 a number of *.yml files.
 
 ## How to build
-The "landscape-config-processor-app" is a generic Java application, which uses Java 11 API (can be easily ported to Java 8).
+The "landscape-config-processor-X.Y.Z" is a generic Java application, which uses Java 11 API (can be easily ported to Java 8).
 Call "mvn clean package assembly:single"
-Find "./target/landscape-config-processor-app.jar"
+Find "./target/landscape-config-processor-X.Y.Z.jar"
 
 ## How to use
 Step 1: prepare some *.properties file and set correct values for the properties.
 See description of each property in the template file "./template.properties"
 
-Step 2: call "java -jar landscape-config-processor-app.jar \$PATH_TO_PROPERTIES_FILE\$"
+Step 2: call "java -jar landscape-config-processor-X.Y.Z.jar \$PATH_TO_PROPERTIES_FILE\$"
