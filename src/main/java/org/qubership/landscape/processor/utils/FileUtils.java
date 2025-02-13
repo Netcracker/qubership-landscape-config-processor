@@ -18,10 +18,12 @@ public class FileUtils {
     }
 
     private static void findAllFilesRecursively(List<String> collectedFiles, File dirToScan, String ... allowedExt) {
+        TheLogger.debug("Searching additional configuration items at '"+ dirToScan + "'");
         File[] items = dirToScan.listFiles();
         if (items == null) return;
 
         for (File item : items) {
+            TheLogger.debug("    Processing item '" + item + "'");
             if (item.isDirectory() && item.exists()) {
                 findAllFilesRecursively(collectedFiles, item);
             } else {
