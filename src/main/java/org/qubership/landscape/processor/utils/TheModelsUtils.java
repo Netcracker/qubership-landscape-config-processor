@@ -8,6 +8,7 @@ import org.qubership.landscape.processor.model.landscapefile.TheCategory;
 import org.qubership.landscape.processor.model.landscapefile.TheItem;
 import org.qubership.landscape.processor.model.landscapefile.TheLandscape;
 import org.qubership.landscape.processor.model.landscapefile.TheSubCategory;
+import org.qubership.landscape.processor.utils.svg.IGraphNodeRenderer;
 
 import java.io.File;
 import java.io.InputStream;
@@ -52,40 +53,37 @@ public class TheModelsUtils {
 
     public static void generateRedCrossLogos(TheLandscape primaryModel, String folderWithOriginalLogos, String folderToSaveNewLogos) {
 
-        // collect rejected items
-        List<TheItem> rejectedItems = null;
-
         for (TheCategory cat : primaryModel.getCategories()) {
             for (TheSubCategory subCat : cat.getSubcategories()) {
                 for (TheItem item : subCat.getItemList()) {
-                    if ("REJECT".equalsIgnoreCase(item.getProject())) {
-                        if (rejectedItems == null) rejectedItems = new ArrayList<>();
-                        rejectedItems.add(item);
+                    String status = item.getProject();
+
+                    if ("REJECT".equalsIgnoreCase(status) || "REJECTED".equalsIgnoreCase(status)) {
+                        postRenderSvg(item, SVGUtils.RED_CROSS_RENDERER, folderWithOriginalLogos, folderToSaveNewLogos);
+                        continue;
+                    }
+
+                    if ("RESEARCHING".equalsIgnoreCase(status)) {
+                        postRenderSvg(item, SVGUtils.UNDER_RESEARCH_RENDERER, folderWithOriginalLogos, folderToSaveNewLogos);
                     }
                 }
             }
         }
+    }
 
-        // generate logos for rejected items
-        if (rejectedItems != null) {
-            for (TheItem item : rejectedItems) {
-                String logoShortName = item.getLogo();
+    private static void postRenderSvg(TheItem item, IGraphNodeRenderer renderer, String folderWithOriginalLogos, String folderToSaveNewLogos) {
+        String logoShortName = item.getLogo();
 
-                String inFileName = folderWithOriginalLogos + File.separator + logoShortName;
-                String outFileName = folderToSaveNewLogos + File.separator + logoShortName;
+        String inFileName = folderWithOriginalLogos + File.separator + logoShortName;
+        String outFileName = folderToSaveNewLogos + File.separator + logoShortName;
 
-                try {
-                    String svgContent = SVGUtils.createSvgWithCrossStrokes(inFileName);
-                    if (svgContent != null) {
-                        FileUtils.saveToFile(svgContent, outFileName);
-                        TheLogger.debug("New SVG file generated " + outFileName);
-                    }
-                } catch (Exception ex) {
-                    TheLogger.error("Error while processing SVG files: in file = " + logoShortName + ", out file = " + outFileName, ex);
-                    // do nothing, continue next item
-                }
-
-            }
+        try {
+            String svgContent = SVGUtils.addExtraGraphLayer(inFileName, renderer);
+            FileUtils.saveToFile(svgContent, outFileName);
+            TheLogger.debug("New SVG file generated " + outFileName);
+        } catch (Exception ex) {
+            TheLogger.error("Error while processing SVG files: in file = " + logoShortName + ", out file = " + outFileName, ex);
+            // do nothing, continue next item
         }
     }
 }
