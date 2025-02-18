@@ -12,12 +12,12 @@ public class FileUtils {
     public static List<String> findAllFilesRecursively(String rootDirName, String ... allowedExt) {
         List<String> result = new ArrayList<>();
 
-        findAllFilesRecursively(result, new File(rootDirName), allowedExt);
+        _findAllFilesRecursively(result, new File(rootDirName), allowedExt);
 
         return result;
     }
 
-    private static void findAllFilesRecursively(List<String> collectedFiles, File dirToScan, String ... allowedExt) {
+    private static void _findAllFilesRecursively(List<String> collectedFiles, File dirToScan, String ... allowedExt) {
         TheLogger.debug("Searching additional configuration items at '"+ dirToScan + "'");
         File[] items = dirToScan.listFiles();
         if (items == null) return;
@@ -25,7 +25,7 @@ public class FileUtils {
         for (File item : items) {
             TheLogger.debug("    Processing item '" + item + "'");
             if (item.isDirectory() && item.exists()) {
-                findAllFilesRecursively(collectedFiles, item);
+                _findAllFilesRecursively(collectedFiles, item, allowedExt);
             } else {
                 String fileName = item.toString();
                 for (String ext : allowedExt) {
