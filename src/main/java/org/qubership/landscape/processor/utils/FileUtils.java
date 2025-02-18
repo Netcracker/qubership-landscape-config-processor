@@ -41,4 +41,8 @@ public class FileUtils {
         Path path = Paths.get(fileToWriteInto);
         Files.write(path, content.getBytes());
     }
+
+    public static String readFile(String fileName) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(fileName)));
+    }
 }
