@@ -8,7 +8,10 @@ import org.qubership.landscape.processor.model.landscapefile.TheCategory;
 import org.qubership.landscape.processor.model.landscapefile.TheItem;
 import org.qubership.landscape.processor.model.landscapefile.TheLandscape;
 import org.qubership.landscape.processor.model.landscapefile.TheSubCategory;
-import org.qubership.landscape.processor.utils.*;
+import org.qubership.landscape.processor.utils.CommandLineHelper;
+import org.qubership.landscape.processor.utils.FileUtils;
+import org.qubership.landscape.processor.utils.TheLogger;
+import org.qubership.landscape.processor.utils.TheModelsUtils;
 
 import java.io.File;
 import java.util.ArrayList;
