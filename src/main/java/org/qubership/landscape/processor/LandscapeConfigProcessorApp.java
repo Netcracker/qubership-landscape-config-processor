@@ -8,10 +8,7 @@ import org.qubership.landscape.processor.model.landscapefile.TheCategory;
 import org.qubership.landscape.processor.model.landscapefile.TheItem;
 import org.qubership.landscape.processor.model.landscapefile.TheLandscape;
 import org.qubership.landscape.processor.model.landscapefile.TheSubCategory;
-import org.qubership.landscape.processor.utils.CommandLineHelper;
-import org.qubership.landscape.processor.utils.FileUtils;
-import org.qubership.landscape.processor.utils.TheLogger;
-import org.qubership.landscape.processor.utils.TheModelsUtils;
+import org.qubership.landscape.processor.utils.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -55,6 +52,9 @@ public class LandscapeConfigProcessorApp {
             TheLogger.error("Primary model of landscape2 format can't be found/read. Terminating.", ex);
             System.exit(-1);
         }
+
+        // let's mark all OOB items as archived
+        AuxUtils.markAllAsArchived(primaryModel);
 
         String rootDir = cmdHelper.getExtraConfigDirName();
         List<String> collectedYamls = FileUtils.findAllFilesRecursively(rootDir, ".yml");

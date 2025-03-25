@@ -1,6 +1,7 @@
 package org.qubership.landscape.processor.utils;
 
 import org.qubership.landscape.processor.model.landscapefile.TheCategory;
+import org.qubership.landscape.processor.model.landscapefile.TheItem;
 import org.qubership.landscape.processor.model.landscapefile.TheLandscape;
 import org.qubership.landscape.processor.model.landscapefile.TheSubCategory;
 
@@ -37,5 +38,15 @@ public class AuxUtils {
         }
 
         return uniqueSet;
+    }
+
+    public static void markAllAsArchived(TheLandscape model) {
+        for (TheCategory cat : model.getCategories()) {
+            for (TheSubCategory subCat : cat.getSubcategories()) {
+                for (TheItem item : subCat.getItemList()) {
+                    item.setProject("archived");
+                }
+            }
+        }
     }
 }

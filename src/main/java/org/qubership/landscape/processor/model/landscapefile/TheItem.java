@@ -178,4 +178,8 @@ public class TheItem extends AutoMergeable {
     public String toString() {
         return name;
     }
+
+    public void setProject(String project) {
+        this.project = project;
+    }
 }
