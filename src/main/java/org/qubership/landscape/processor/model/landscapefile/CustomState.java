@@ -9,7 +9,7 @@ public enum CustomState {
     USED("used"),
     DROP("drop", "dropped");
 
-    private List<String> stateList;
+    private final List<String> stateList;
 
     CustomState(String ... states) {
         if (states == null) throw new IllegalArgumentException("At least one state string must be provided");

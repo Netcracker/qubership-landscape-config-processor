@@ -18,7 +18,6 @@ import java.util.List;
  * Prepares effective configuration for landscape2 application
  * using base landscape.yml file and number of *.yml extensions
  * by merging them into base configuration.
- *
  * It also supports additional states for the items providing post-rendering SVG icons.
  */
 public class LandscapeConfigProcessorApp {

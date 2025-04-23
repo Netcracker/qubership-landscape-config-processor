@@ -56,7 +56,7 @@ Note: you should comment out "groups" property in the settings.yml file, otherwi
 The "screenshot_width" property is also recommended to be disabled for quick start (on the dev env)
 
 
-If compilation is finished without significant errors (errors for absent pictures may be skip on dev env) run
+If compilation is finished without significant errors (errors for absent pictures may be skipped on dev env) run
 ```shell
 landscape2 serve --landscape-dir build
 ```
