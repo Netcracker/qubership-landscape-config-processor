@@ -53,7 +53,9 @@ public class LandscapeConfigProcessorApp {
             System.exit(-1);
         }
 
-        // let's mark all OOB items as archived
+        // let's mark all OOB items as archived - this is needed for better picture view
+        // all archived by default items will be rendered in gray colors, so user will clearly see
+        // which items are not touched yet
         AuxUtils.markAllAsArchived(primaryModel);
 
         String rootDir = cmdHelper.getExtraConfigDirName();
@@ -64,8 +66,6 @@ public class LandscapeConfigProcessorApp {
         }
 
         // We should skip primary file which may be collected in PATH_TO_SCAN dir
-
-
         List<TheLandscape> allModels = new ArrayList<>(collectedYamls.size());
         for (String nextFileName : collectedYamls) {
             try {
