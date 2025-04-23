@@ -86,4 +86,24 @@ public class TheModelsUtils {
             // do nothing, continue next item
         }
     }
+
+    /**
+     * Goes over all items and add mandatory fields in case they are absent
+     * @param primaryModel
+     */
+    public static void fulfillMandatoryFieldIfAbsent(TheLandscape primaryModel) {
+        for (TheCategory cat : primaryModel.getCategories()) {
+            for (TheSubCategory subCat : cat.getSubcategories()) {
+                for (TheItem item : subCat.getItemList()) {
+                    if (StringUtils.isEmpty(item.getHomepageUrl())) {
+                        item.setHomepageUrl("http://google.com");
+                    }
+
+                    if (StringUtils.isEmpty(item.getLogo())) {
+                        item.setLogo("nc_logo.svg"); // todo: generate personal logo
+                    }
+                }
+            }
+        }
+    }
 }

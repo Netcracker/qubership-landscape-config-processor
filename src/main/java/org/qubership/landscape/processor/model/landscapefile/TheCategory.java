@@ -15,6 +15,7 @@ public class TheCategory extends AutoMergeable {
     private TheCategory theCategory;
 
     @JsonProperty("name")
+    @IgnoreWhenAutoMerging
     private String name;
 
     @JsonProperty("subcategories")

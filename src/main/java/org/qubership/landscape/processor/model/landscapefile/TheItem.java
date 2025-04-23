@@ -182,4 +182,12 @@ public class TheItem extends AutoMergeable {
     public void setProject(String project) {
         this.project = project;
     }
+
+    public void setHomepageUrl(String homepageUrl) {
+        this.homepageUrl = homepageUrl;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 }

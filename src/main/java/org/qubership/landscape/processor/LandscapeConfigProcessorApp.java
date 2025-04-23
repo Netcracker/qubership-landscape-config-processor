@@ -93,6 +93,8 @@ public class LandscapeConfigProcessorApp {
         String outputFileName = cmdHelper.getResultConfigFileName();
         TheLogger.debug("Saving result configuration into " + outputFileName);
 
+        TheModelsUtils.fulfillMandatoryFieldIfAbsent(primaryModel);
+
         // Provide some statistics about new result file for debug aims
         printReport(primaryModel);
 
