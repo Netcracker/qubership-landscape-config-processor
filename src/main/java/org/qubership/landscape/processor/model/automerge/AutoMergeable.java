@@ -41,6 +41,7 @@ public abstract class AutoMergeable {
 
             if (className.startsWith("class java.lang.")) {
                 Object otherValue = field.get(other);
+                if (otherValue == null) continue;
 
                 // check if field is marked with @Concatenate annotation
                 Annotation anConcat = field.getAnnotation(ConcatenateWhenMerge.class);
